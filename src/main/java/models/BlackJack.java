@@ -7,7 +7,7 @@ import java.util.Random;
 /**
  * Created by danielgoh on 3/3/16.
  */
-public abstract class BlackJack {
+public class BlackJack {
 
     public java.util.List<Card> deck = new ArrayList<>();
     public java.util.List<java.util.List<Card>> rows = new ArrayList<>();
@@ -18,16 +18,17 @@ public abstract class BlackJack {
 
     public String gameStateString;
 
-    public int money;
-    public int playerBet;
+    public int playerMoney;
 
     public BlackJack() {
+        Dealer d = new Dealer();
+        Player p = new Player();
         //Dealer
         rows.add(new ArrayList<Card>());
         //Player
         rows.add(new ArrayList<Card>());
         buildDeck();
-        money = 100;
+        p.money = 100;
         gameStateString = "Game is running";
     }
 
