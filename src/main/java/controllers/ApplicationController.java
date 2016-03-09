@@ -38,7 +38,7 @@ public class ApplicationController {
     }
 
     public Result gameGet(){
-        BlackJack g = new Dealer();
+        BlackJack g = new BlackJack();
         g.shuffle();
         g.dealTwo();
 

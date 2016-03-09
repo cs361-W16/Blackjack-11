@@ -13,38 +13,38 @@ public class testDealer {
 
     @Test
     public void testGameCreation(){
-        BlackJack g = new Dealer();
+        BlackJack g = new BlackJack();
         assertNotNull(g);
     }
 
     @Test
     public void testGameBuildDeck(){
-        BlackJack g = new Dealer();
+        BlackJack g = new BlackJack();
         assertEquals(52,g.deck.size());
     }
 
     @Test
     public void testGameInit(){
-        BlackJack g = new Dealer();
+        BlackJack g = new BlackJack();
         g.shuffle();
         assertNotEquals(2,g.deck.get(0).getValue());
     }
 
     @Test
     public void testGameInitMoney(){
-        BlackJack g = new Dealer();
-        assertEquals(100,g.money);
+        BlackJack g = new BlackJack();
+        assertEquals(100,(g.p.money);
     }
 
     @Test
     public void testGameInitString(){
-        BlackJack g = new Dealer();
+        BlackJack g = new BlackJack();
         assertEquals("Game is running",g.gameStateString);
     }
 
     @Test
     public void testGameStart(){
-        BlackJack g = new Dealer();
+        BlackJack g = new BlackJack();
         g.shuffle();
         g.dealTwo();
         assertEquals(2,g.rows.get(0).size());
