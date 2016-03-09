@@ -78,13 +78,7 @@
 <button id="stayButton">Stay</button>
 <button id="doubleButton">Double</button>
 
-<p></p>
-<td>Player Wins:</td>
-<td id="playerWin"></td>
-<p></p>
-<td>Dealer Wins:</td>
-<td id="dealerWin"></td>
-<p></p>
+
 
 
 <script>
@@ -94,16 +88,16 @@ var game;
 function display(game) {
 console.log(game);
 $('#gameStateString').html(game.gameStateString);
-$('#money').html(game.money);
+$('#money').html(game.player.money);
 
 
 $( '.rowOfCards .cardLocation' ).html("");
 
-    $.each(game.rows[0], function( key, val ) {
+    $.each(game.dealer.hand, function( key, val ) {
         $( '#c0 .l0' ).html(val.value + val.suit);
     });
 
- $.each(game.rows[1], function( key, val ) {
+ $.each(game.player.hand, function( key, val ) {
         $( '#c1 .l'+key ).html(val.value + val.suit);
     });
 

@@ -11,5 +11,11 @@ public class Dealer extends GamePlayer {
         super();
     }
 
+    public void play(ArrayList<Card> deck){
+        while(getTotal() < 17){
+            hit(deck);
+        }
+        stand();
+    }
 
 }

@@ -39,8 +39,6 @@ public class ApplicationController {
 
     public Result gameGet(){
         BlackJack g = new BlackJack();
-        g.shuffle();
-        g.dealTwo();
 
         return Results.json().render(g);
     }
