@@ -43,8 +43,8 @@ public class BlackJack {
     }
 
     public void dealTwo() {
+        dealer.hit(deck);
         for(int i = 0; i < 2; i++){
-            dealer.hit(deck);
             player.hit(deck);
         }
     }
