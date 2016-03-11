@@ -57,12 +57,27 @@ public class BlackJack {
     public int whoWins(){
         int playerScore = player.getTotal();
         int dealerScore = dealer.getTotal();
-        if(playerScore >21) return -1;
-        else if(dealerScore>21) return 1;
+        if(playerScore >21){
+            setGameStateString("You lose");
+            return -1;
+        }
+        else if(dealerScore>21){
+            setGameStateString("You win");
+            return 1;
+        }
         else {
-            if(playerScore < dealerScore) return -1;
-            else if(playerScore > dealerScore) return 1;
-            else return 0;
+            if(playerScore < dealerScore){
+                setGameStateString("You lose");
+                return -1;
+            }
+            else if(playerScore > dealerScore){
+                setGameStateString("You win");
+                return 1;
+            }
+            else{
+                setGameStateString("Draw game");
+                return 0;
+            }
         }
     }
 }
