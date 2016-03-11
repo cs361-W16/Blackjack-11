@@ -15,7 +15,7 @@ public class Dealer extends GamePlayer {
         while(getTotal() < 17){
             hit(deck);
         }
-        stand();
+        stay();
     }
 
 }

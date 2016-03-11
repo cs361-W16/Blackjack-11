@@ -49,6 +49,20 @@ public class BlackJack {
         }
     }
 
-
-
+    /*
+    -1: dealer win
+     1: player win
+     0: draw
+     */
+    public int whoWins(){
+        int playerScore = player.getTotal();
+        int dealerScore = dealer.getTotal();
+        if(playerScore >21) return -1;
+        else if(dealerScore>21) return 1;
+        else {
+            if(playerScore < dealerScore) return -1;
+            else if(playerScore > dealerScore) return 1;
+            else return 0;
+        }
+    }
 }

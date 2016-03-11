@@ -2,6 +2,8 @@ package models;
 
 import org.junit.Test;
 
+import java.util.ArrayList;
+
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotEquals;
 import static org.junit.Assert.assertNotNull;
@@ -44,7 +46,27 @@ public class testBlackJack {
         assertEquals(2,g.player.hand.size());
     }
 
+    @Test
+    public void testWhoWins(){
+        BlackJack g = new BlackJack();
+        ArrayList<Card> playerHand = new ArrayList<>();
+        ArrayList<Card> dealerHand = new ArrayList<>();
+        playerHand.add(new Card(10, Suit.Spades));
+        playerHand.add(new Card(12, Suit.Hearts));
+        dealerHand.add(new Card(9, Suit.Clubs));
+        dealerHand.add(new Card(1, Suit.Diamonds));
+        g.player.hand = playerHand;
+        g.dealer.hand = dealerHand;
+        assertEquals(0, g.whoWins());
+    }
 
+    @Test
+    public void testSetGameStateString(){
+        BlackJack g = new BlackJack();
+        assertEquals(g.gameStateString, "Game is running");
+        g.setGameStateString("Make your decision");
+        assertEquals(g.gameStateString, "Make your decision");
+    }
 
 }
 

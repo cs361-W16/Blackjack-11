@@ -21,9 +21,10 @@ public abstract class GamePlayer {
     public void hit(ArrayList<Card> deck){
         addHand(deck.get(deck.size()-1));
         deck.remove(deck.size()-1);
+        if(getTotal() > 21) stay();
     }
 
-    public void stand(){
+    public void stay(){
         turnEnd = true;
     }
 
