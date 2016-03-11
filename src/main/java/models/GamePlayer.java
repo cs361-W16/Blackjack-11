@@ -51,4 +51,5 @@ public abstract class GamePlayer {
 
         return sum;
     }
+
 }
