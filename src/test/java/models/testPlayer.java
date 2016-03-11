@@ -27,4 +27,19 @@ public class testPlayer {
         BlackJack g = new BlackJack();
         assertEquals(2,g.player.hand.size());
     }
+
+    @Test
+    public void testBet() {
+        BlackJack g = new BlackJack();
+        g.player.bet(30);
+        assertEquals(30, g.player.playerBet);
+    }
+
+    @Test
+    public void testDoubleDown() {
+        BlackJack g = new BlackJack();
+        g.player.bet(30);
+        g.player.doubleDown(g.deck);
+        assertEquals(60, g.player.playerBet);
+    }
 }

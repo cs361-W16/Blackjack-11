@@ -27,7 +27,7 @@ public class Player extends GamePlayer{
         if(bet(playerBet*2) == false) return false;
         else{
             hit(deck);
-            stand();
+            stay();
             return true;
         }
     }

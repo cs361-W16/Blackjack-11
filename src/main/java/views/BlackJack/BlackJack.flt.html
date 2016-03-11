@@ -55,7 +55,23 @@
             <th><th class="cardLocation l8"></th></th>
         </table></center>
     </td>
-
+</table>
+<table>
+    <td class="rowOfCards" id="c2">
+        <center><table>
+            <th><td class="cardLocation l0"></td></th>
+            <th><td class="cardLocation l1"></td></th>
+        </table></center>
+        <center><table>
+            <th><th class="cardLocation l2"></th></th>
+            <th><th class="cardLocation l3"></th></th>
+            <th><th class="cardLocation l4"></th></th>
+            <th><th class="cardLocation l5"></th></th>
+            <th><th class="cardLocation l6"></th></th>
+            <th><th class="cardLocation l7"></th></th>
+            <th><th class="cardLocation l8"></th></th>
+        </table></center>
+    </td>
 </table>
 
 <p></p>
@@ -94,7 +110,11 @@ $('#money').html(game.player.money);
 $( '.rowOfCards .cardLocation' ).html("");
 
     $.each(game.dealer.hand, function( key, val ) {
-        $( '#c0 .l0' ).html(val.value + val.suit);
+        $( '#c0 .l'+key ).html(val.value + val.suit);
+    });
+
+ $.each(game.player.hand, function( key, val ) {
+        $( '#c1 .l'+key ).html(val.value + val.suit);
     });
 
  $.each(game.player.hand, function( key, val ) {
