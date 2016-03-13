@@ -25,7 +25,7 @@ public class Player extends GamePlayer{
     }
 
     public boolean doubleDown(ArrayList<Card> deck){
-        if(bet(playerBet*2) == false) return false;
+        if(bet(playerBet * 2) == false) return false;
         else{
             hit(deck);
             stay();
@@ -33,15 +33,15 @@ public class Player extends GamePlayer{
         }
     }
 
-    public void loser(int playerBet) {
+    public void loser() {
         money = money - playerBet;
     }
 
-    public void winner(int playerBet){
+    public void winner(){
         money = money + playerBet;
     }
 
-    public void blackjackBaby(int playerBet){
+    public void blackjackBaby(){
         money = money + (playerBet * winnerWinnerChickenDinner);
     }
 }
