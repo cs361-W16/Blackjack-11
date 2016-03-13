@@ -33,15 +33,15 @@ public class Player extends GamePlayer{
         }
     }
 
-    public void loser(){
+    public void loser(int playerBet) {
         money = money - playerBet;
     }
 
-    public void winner(){
+    public void winner(int playerBet){
         money = money + playerBet;
     }
 
-    public void blackjackBaby(){
+    public void blackjackBaby(int playerBet){
         money = money + (playerBet * winnerWinnerChickenDinner);
     }
 }
