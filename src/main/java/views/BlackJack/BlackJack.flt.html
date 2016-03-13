@@ -1,0 +1,167 @@
+<center><h1>BlackJack</h1></center>
+
+<link href="/assets/css/BlackJack.css" rel="stylesheet">
+<script type="text/javascript" src="/assets/webjars/jquery/2.1.3/jquery.js"></script>
+
+<body>
+<table>
+    <tr class="gameStateString">
+        <tk>Game State: </tk>
+        <tk id="gameStateString"></tk>
+    </tr>
+    <p></p>
+</table>
+<table>
+    <tr>
+        <center><tk><h3>Dealer</h3></tk></center>
+    </tr>
+</table>
+<table>
+    <td class="rowOfCards" id="c0">
+        <center><table>
+            <th><td class="cardLocation l0"></td></th>
+            <th><td class="cardLocation l1"></td></th>
+        </table></center>
+        <center><table>
+            <th><th class="cardLocation l2"></th></th>
+            <th><th class="cardLocation l3"></th></th>
+            <th><th class="cardLocation l4"></th></th>
+            <th><th class="cardLocation l5"></th></th>
+            <th><th class="cardLocation l6"></th></th>
+            <th><th class="cardLocation l7"></th></th>
+            <th><th class="cardLocation l8"></th></th>
+        </table></center>
+    </td>
+</table>
+<table>
+    <tr>
+        <center><tk><h3>Player</h3></tk></center>
+    </tr>
+</table>
+<table>
+    <td class="rowOfCards" id="c1">
+        <center><table>
+            <th><td class="cardLocation l0"></td></th>
+            <th><td class="cardLocation l1"></td></th>
+        </table></center>
+        <center><table>
+            <th><th class="cardLocation l2"></th></th>
+            <th><th class="cardLocation l3"></th></th>
+            <th><th class="cardLocation l4"></th></th>
+            <th><th class="cardLocation l5"></th></th>
+            <th><th class="cardLocation l6"></th></th>
+            <th><th class="cardLocation l7"></th></th>
+            <th><th class="cardLocation l8"></th></th>
+        </table></center>
+    </td>
+</table>
+<table>
+    <td class="rowOfCards" id="c2">
+        <center><table>
+            <th><td class="cardLocation l0"></td></th>
+            <th><td class="cardLocation l1"></td></th>
+        </table></center>
+        <center><table>
+            <th><th class="cardLocation l2"></th></th>
+            <th><th class="cardLocation l3"></th></th>
+            <th><th class="cardLocation l4"></th></th>
+            <th><th class="cardLocation l5"></th></th>
+            <th><th class="cardLocation l6"></th></th>
+            <th><th class="cardLocation l7"></th></th>
+            <th><th class="cardLocation l8"></th></th>
+        </table></center>
+    </td>
+</table>
+
+
+    <br>
+
+<table>
+    <tr class="money">
+        <tk>Player Money: $</tk>
+        <tk id="money"></tk>
+    </tr>
+</table>
+<table>
+    <p></p>
+    <tr class="playerBet">
+        <tk>Player Bet: $</tk>
+        <tk id="playerBet"></tk>
+    </tr>
+</table>
+
+<BR>Betting: <button id="BetOne">$1</button><button id="BetTwo">$2</button><button id="BetFour">$4</button><button id="BetEight">$8</button><button id="BetTen">$10</button>
+
+<br>
+
+<button id="hitButton">Hit</button>
+<button id="stayButton">Stay</button>
+<button id="doubleButton">Double</button>
+
+
+<script>
+
+var game;
+
+function display(game) {
+console.log(game);
+$('#gameStateString').html(game.gameStateString);
+$('#money').html(game.player.money);
+$('#playerBet').html(game.player.playerBet);
+
+$( '.rowOfCards .cardLocation' ).html("");
+
+    $.each(game.dealer.hand, function( key, val ) {
+        $( '#c0 .l'+key ).html(val.value + val.suit);
+    });
+
+ $.each(game.player.hand, function( key, val ) {
+        $( '#c1 .l'+key ).html(val.value + val.suit);
+    });
+
+ $.each(game.player.hand, function( key, val ) {
+        $( '#c1 .l'+key ).html(val.value + val.suit);
+    });
+
+}
+
+$.getJSON("http://localhost:8080/game", function( data ) {
+display(data);
+game = data;
+});
+
+function betValue(betAmount){
+$.ajax({
+type: "POST",
+url: "/betValue/"+betAmount,
+data: JSON.stringify(game),
+success: function(data, status){console.log("Data: " + data + "\nStatus: " + status);
+game = data;
+display(data);},
+contentType:"application/json; charset=utf-8",
+dataType:"json",
+});
+
+}
+
+$("#BetOne").click(function(){
+    betValue(1);
+});
+$("#BetTwo").click(function(){
+    betValue(2);
+});
+$("#BetFour").click(function(){
+    betValue(4);
+});
+$("#BetEight").click(function(){
+    betValue(8);
+});
+$("#BetTen").click(function(){
+    betValue(10);
+});
+
+
+</script>
+
+</body>
+</html>
