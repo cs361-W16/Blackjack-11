@@ -17,7 +17,6 @@
 package controllers;
 
 import models.BlackJack;
-import models.Dealer;
 import ninja.Context;
 import ninja.Result;
 import ninja.Results;
@@ -39,8 +38,33 @@ public class ApplicationController {
 
     public Result gameGet(){
         BlackJack g = new BlackJack();
-
         return Results.json().render(g);
     }
+
+    public Result betValue(Context context, @PathParam("moneyValue") int betAmount, BlackJack g){
+        g.player.bet(betAmount);
+        return  Results.json().render(g);
+    }
+
+    public Result gameHit(BlackJack g){
+        g.setGameStateString("HIT!") ;
+        return Results.json().render(g);
+    }
+
+    public Result gameStay(BlackJack g){
+        g.setGameStateString("Stay!") ;
+        return Results.json().render(g);
+    }
+
+    public Result gameDouble(BlackJack g){
+        g.setGameStateString("Double!") ;
+        return Results.json().render(g);
+    }
+
+    public Result gameSplit(BlackJack g){
+        g.setGameStateString("Split!") ;
+        return Results.json().render(g);
+    }
+
 
 }
