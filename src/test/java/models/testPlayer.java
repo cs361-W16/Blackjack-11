@@ -55,7 +55,7 @@ public class testPlayer {
     }
 
     @Test
-    public void testWLoser() {
+    public void testLoser() {
         Player p = new Player();
         Player p2 = new Player();
         //Check to see if winning decreases money
