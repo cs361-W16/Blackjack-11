@@ -71,7 +71,7 @@ public class Player extends GamePlayer{
 
 
         if(is_split == true && getTotal() > 21) {
-            turnEnd = false;
+            turnEnd = true;
             split_hand.add(deck.get(deck.size() - 1));
             deck.remove(deck.size() - 1);
             if(getSplitTotal() > 21)
