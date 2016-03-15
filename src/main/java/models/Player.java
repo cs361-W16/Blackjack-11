@@ -10,6 +10,7 @@ public class Player extends GamePlayer{
     public int playerBet;
     public boolean is_split;
     public java.util.List<Card> split_hand;
+    public int winnerWinnerChickenDinner = 2;
 
     public Player(){
         super();
@@ -23,6 +24,15 @@ public class Player extends GamePlayer{
         if(bet < 0 || bet > money) return false;
         else {
             playerBet = bet;
+            return true;
+        }
+    }
+
+    public boolean doubleDown(ArrayList<Card> deck){
+        if(bet(playerBet * 2) == false) return false;
+        else{
+            hit(deck);
+            stay();
             return true;
         }
     }
@@ -49,15 +59,6 @@ public class Player extends GamePlayer{
 
         return sum;
     }
-    public boolean doubleDown(ArrayList<Card> deck){
-        if(bet(playerBet*2) == false) return false;
-        else{
-            hit(deck);
-            stay();
-            return true;
-        }
-    }
-
     public void split(){
         playerBet = playerBet* 2;
 
@@ -79,4 +80,18 @@ public class Player extends GamePlayer{
         else
             hit(deck);
     }
+
+
+
+    public void loser() {
+        money = money - playerBet;
     }
+
+    public void winner(){
+        money = money + playerBet;
+    }
+
+    public void blackjackBaby(){
+        money = money + (playerBet * winnerWinnerChickenDinner);
+    }
+}
