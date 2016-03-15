@@ -28,7 +28,7 @@ public class testDealer {
     @Test
     public void testDealerStartHand() {
         BlackJack g = new BlackJack();
-        assertEquals(2,g.dealer.hand.size());
+        assertEquals(1,g.dealer.hand.size());
     }
 
     @Test

@@ -63,7 +63,7 @@ public class testPlayer {
         //Check to see if winning decreases money
         p.bet(25);
         p.loser();
-        assertEquals(p.money, p2.money);
+        assertEquals(p.money, p2.money-25);
     }
 
     @Test
