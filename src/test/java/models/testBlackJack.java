@@ -23,7 +23,7 @@ public class testBlackJack {
     public void testGameBuildDeck(){
         BlackJack g = new BlackJack();
         // 4 has been dealt
-        assertEquals(48,g.deck.size());
+        assertEquals(49,g.deck.size());
     }
 
     @Test
@@ -42,7 +42,7 @@ public class testBlackJack {
     @Test
     public void testDealTwo(){
         BlackJack g = new BlackJack();
-        assertEquals(2,g.dealer.hand.size());
+        assertEquals(1,g.dealer.hand.size());
         assertEquals(2,g.player.hand.size());
     }
 
@@ -66,6 +66,74 @@ public class testBlackJack {
         assertEquals(g.gameStateString, "Game is running");
         g.setGameStateString("Make your decision");
         assertEquals(g.gameStateString, "Make your decision");
+    }
+
+    @Test
+    public void testWhoWins2(){
+        BlackJack g = new BlackJack();
+        ArrayList<Card> playerHand = new ArrayList<>();
+        ArrayList<Card> dealerHand = new ArrayList<>();
+        playerHand.add(new Card(9, Suit.Spades));
+        playerHand.add(new Card(9, Suit.Hearts));
+        playerHand.add(new Card(9, Suit.Hearts));
+        dealerHand.add(new Card(9, Suit.Clubs));
+        dealerHand.add(new Card(1, Suit.Diamonds));
+        g.player.hand = playerHand;
+        g.whoWins();
+        g.dealer.hand = dealerHand;
+        assertEquals(g.gameStateString, "You lose");
+    }
+
+    @Test
+    public void testWhoWins3(){
+        BlackJack g = new BlackJack();
+        ArrayList<Card> playerHand = new ArrayList<>();
+        ArrayList<Card> dealerHand = new ArrayList<>();
+        playerHand.add(new Card(9, Suit.Spades));
+        playerHand.add(new Card(9, Suit.Hearts));
+        dealerHand.add(new Card(9, Suit.Clubs));
+        dealerHand.add(new Card(9, Suit.Clubs));
+        dealerHand.add(new Card(9, Suit.Clubs));
+        dealerHand.add(new Card(1, Suit.Diamonds));
+        g.player.hand = playerHand;
+        g.dealer.hand = dealerHand;
+        g.whoWins();
+
+        assertEquals(g.gameStateString, "You win");
+    }
+
+    @Test
+    public void testWhoWins4(){
+        BlackJack g = new BlackJack();
+        ArrayList<Card> playerHand = new ArrayList<>();
+        ArrayList<Card> dealerHand = new ArrayList<>();
+        playerHand.add(new Card(2, Suit.Spades));
+        playerHand.add(new Card(3, Suit.Hearts));
+        dealerHand.add(new Card(9, Suit.Clubs));
+        dealerHand.add(new Card(9, Suit.Clubs));
+
+        g.player.hand = playerHand;
+        g.dealer.hand = dealerHand;
+        g.whoWins();
+
+        assertEquals(g.gameStateString, "You lose");
+    }
+
+    @Test
+    public void testWhoWins5(){
+        BlackJack g = new BlackJack();
+        ArrayList<Card> playerHand = new ArrayList<>();
+        ArrayList<Card> dealerHand = new ArrayList<>();
+        playerHand.add(new Card(9, Suit.Spades));
+        playerHand.add(new Card(9, Suit.Hearts));
+        dealerHand.add(new Card(2, Suit.Clubs));
+        dealerHand.add(new Card(3, Suit.Clubs));
+
+        g.player.hand = playerHand;
+        g.dealer.hand = dealerHand;
+        g.whoWins();
+
+        assertEquals(g.gameStateString, "You win");
     }
 
 }
