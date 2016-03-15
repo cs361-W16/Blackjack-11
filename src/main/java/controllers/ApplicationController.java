@@ -44,8 +44,6 @@ public class ApplicationController {
     }
 
     public Result gameHit(BlackJack g){
-
-        g.player.hit(g.player.hand);
         return Results.json().render(g);
     }
 
