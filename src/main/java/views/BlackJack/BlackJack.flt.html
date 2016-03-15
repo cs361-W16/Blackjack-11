@@ -73,28 +73,28 @@
         </table></center>
     </td>
 </table>
-
-<p></p>
-
+<br>
 <table>
     <tr class="money">
         <tk>Player Money: $</tk>
         <tk id="money"></tk>
     </tr>
 </table>
-
-    <BR>Betting: <input type="text" id="betting"/> <button id="Bet!">Bet</button>
+<table>
     <p></p>
-    <td>Player Bet:</td>
-    <td id="betAmount"></td>
+    <tr class="playerBet">
+        <tk>Player Bet: $</tk>
+        <tk id="playerBet"></tk>
+    </tr>
+</table>
 
-<p></p>
+<BR>Betting: <button id="BetOne">$1</button><button id="BetTwo">$2</button><button id="BetFour">$4</button><button id="BetEight">$8</button><button id="BetTen">$10</button>
+
+<br>
 
 <button id="hitButton">Hit</button>
 <button id="stayButton">Stay</button>
 <button id="doubleButton">Double</button>
-
-
 
 
 <script>
@@ -128,6 +128,78 @@ display(data);
 game = data;
 });
 
+function hit(){
+$.ajax(
+type: "POST",
+url: "/hit/",
+data: JSON.stringify(game),
+success: function(data, status){console.log("Data: " + data + "\nStatus: " + status);
+game = data;
+display(data);},
+contentType:"application/json; charset=utf-8",
+dataType:"json",
+});
+
+}
+
+function stay(){
+$.ajax(
+type: "POST",
+url: "/stay/",
+data: JSON.stringify(game),
+success: function(data, status){console.log("Data: " + data + "\nStatus: " + status);
+game = data;
+display(data);},
+contentType:"application/json; charset=utf-8",
+dataType:"json",
+});
+
+}
+
+function double(){
+$.ajax(
+type: "POST",
+url: "/double/",
+data: JSON.stringify(game),
+success: function(data, status){console.log("Data: " + data + "\nStatus: " + status);
+game = data;
+display(data);},
+contentType:"application/json; charset=utf-8",
+dataType:"json",
+});
+
+}
+
+function betValue(betAmount){
+$.ajax({
+type: "POST",
+url: "/betValue/"+betAmount,
+data: JSON.stringify(game),
+success: function(data, status){console.log("Data: " + data + "\nStatus: " + status);
+game = data;
+display(data);},
+contentType:"application/json; charset=utf-8",
+dataType:"json",
+});
+
+}
+
+
+$("#BetOne").click(function(){
+    betValue(1);
+});
+$("#BetTwo").click(function(){
+    betValue(2);
+});
+$("#BetFour").click(function(){
+    betValue(4);
+});
+$("#BetEight").click(function(){
+    betValue(8);
+});
+$("#BetTen").click(function(){
+    betValue(10);
+});
 
 
 
