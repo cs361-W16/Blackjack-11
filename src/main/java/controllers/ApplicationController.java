@@ -43,4 +43,20 @@ public class ApplicationController {
         return Results.json().render(g);
     }
 
+    public Result gameHit(BlackJack g){
+
+        g.player.hit(g.player.hand);
+        return Results.json().render(g);
+    }
+
+    public Result gameStay(BlackJack g){
+
+        return Results.json().render(g);
+    }
+
+    public Result gameDouble(BlackJack g){
+
+        return Results.json().render(g);
+    }
+
 }
