@@ -8,6 +8,7 @@ import java.util.ArrayList;
 public class Player extends GamePlayer{
     public int money;
     public int playerBet;
+    public int winnerWinnerChickenDinner = 2;
 
     public Player(){
         super();
@@ -24,11 +25,23 @@ public class Player extends GamePlayer{
     }
 
     public boolean doubleDown(ArrayList<Card> deck){
-        if(bet(playerBet*2) == false) return false;
+        if(bet(playerBet * 2) == false) return false;
         else{
             hit(deck);
             stay();
             return true;
         }
+    }
+
+    public void loser() {
+        money = money - playerBet;
+    }
+
+    public void winner(){
+        money = money + playerBet;
+    }
+
+    public void blackjackBaby(){
+        money = money + (playerBet * winnerWinnerChickenDinner);
     }
 }
