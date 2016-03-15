@@ -205,6 +205,6 @@ public class testPlayer {
         dealerHand.add(new Card(3, Suit.Diamonds));
         g.dealer.hand = dealerHand;
         g.dealer.play(deck);
-        assertEquals(23, g.player.getSplitTotal());
+        assertEquals(0, g.player.getSplitTotal());
     }
 }
