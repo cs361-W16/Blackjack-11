@@ -22,8 +22,8 @@ public class testBlackJack {
     @Test
     public void testGameBuildDeck(){
         BlackJack g = new BlackJack();
-        // 4 has been dealt
-        assertEquals(48,g.deck.size());
+        // 43has been dealt
+        assertEquals(49,g.deck.size());
     }
 
     @Test
@@ -42,7 +42,7 @@ public class testBlackJack {
     @Test
     public void testDealTwo(){
         BlackJack g = new BlackJack();
-        assertEquals(2,g.dealer.hand.size());
+        assertEquals(1,g.dealer.hand.size());
         assertEquals(2,g.player.hand.size());
     }
 
